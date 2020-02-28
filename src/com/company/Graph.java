@@ -43,11 +43,13 @@ class Graph {
             List<Country> children = map.get(currentVertex);
             Collections.sort(children);
             for (Country vertex:children) {
-                if (vertex.hasClub){
-                    return vertex;
+                if (!visitedVertex.contains(vertex)){
+                    if (vertex.hasClub){
+                        return vertex;
+                    }
+                    visitedVertex.add(vertex);
+                    queue.add(vertex);
                 }
-                visitedVertex.add(vertex);
-                queue.add(vertex);
             }
         }
         return null;
